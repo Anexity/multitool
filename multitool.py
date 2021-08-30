@@ -1,8 +1,10 @@
-# multitool start
+# multitool
+
 import clipboard
 import tkinter as tk
 import tkinter.messagebox
 import random
+import subprocess
 
 window = tk.Tk()
 
@@ -43,7 +45,49 @@ greeting = tk.Label(
     width=26,
     height=2
 )
-greeting.pack()
+
+# ipcheck input side - lit
+iptex1 = tk.Label(
+    text="target ip",
+    fg="white",
+    bg="#171717",
+    width=26,
+    height=2
+)
+
+ipe1 = tk.Entry(
+    fg="white",
+    bg="#171717",
+    width=30
+)
+
+iptex2 = tk.Label(
+    text="port start",
+    fg="white",
+    bg="#171717",
+    width=26,
+    height=2
+)
+
+ipe2 = tk.Entry(
+    fg="white",
+    bg="#171717",
+    width=30
+)
+
+iptex3 = tk.Label(
+    text="port end",
+    fg="white",
+    bg="#171717",
+    width=26,
+    height=2
+)
+
+ipe3 = tk.Entry(
+    fg="white",
+    bg="#171717",
+    width=30
+)
 
 # pwgen button & pwgen code modded and copied from my
 # original pwgen.
@@ -100,7 +144,41 @@ def handle_click2(event):
         message=(throw1),
     )
 
+# ip checker
 
+button3 = tk.Button(
+    text="check ip",
+    width=25,
+    height=3,
+    bg="#999999",
+    fg="#171717",
+)
+
+def handle_click3(event):
+    webvar = (ipe1.get())
+    if(webvar != ""):
+        for ping in range(int(ipe2.get()), int(ipe3.get())):
+            adress = (webvar) + ":" + str(ping)
+            res = subprocess.call(['ping', adress])
+            if res == 0:
+                tkinter.messagebox.showinfo(
+                    title=("ping process"),
+                    message=("a ping went through to host.")
+                )
+            elif res == 2:
+                tkinter.messagebox.showerror(
+                    title=("ping process"),
+                    message=("no response was recieved.")
+                    )
+            else:
+                tkinter.messagebox.showerror(
+                    title=("ping process"),
+                    message=("pinging the host failed.")
+                )
+
+# packing all the windows
+
+greeting.pack()
 input1.pack()
 e1.pack()
 input2.pack()
@@ -109,4 +187,13 @@ button1.bind("<Button-1>", handle_click)
 button2.bind("<Button-1>", handle_click2)
 button1.pack()
 button2.pack()
+iptex1.pack()
+ipe1.pack()
+iptex2.pack()
+ipe2.pack()
+iptex3.pack()
+ipe3.pack()
+button3.bind("<Button-1>", handle_click3)
+button3.pack()
+
 window.mainloop()
