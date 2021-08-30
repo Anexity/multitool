@@ -11,3 +11,7 @@ This code is very generic.
 Its literally the most generic code ever -
 and its also half taken from StackOverflow,
 ill try my best to credit where i found code if its pasted.
+
+# Usage Warning
+Every piece of code is here for learning
+and research purpouses and comes without Warranty.
