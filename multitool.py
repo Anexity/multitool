@@ -1,4 +1,4 @@
-# build a simple gui messaging app
+# multitool start
 import clipboard
 import tkinter as tk
 import tkinter.messagebox
