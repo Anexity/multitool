@@ -135,7 +135,7 @@ button2 = tk.Button(
 
 # Dicethrow button and build with
 # random randint.
-)
+
 def handle_click2(event):
     throw1 = random.randint(1, int(e2.get()))
 
